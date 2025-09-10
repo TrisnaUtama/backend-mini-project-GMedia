@@ -1,0 +1,2 @@
+npm run lint:format
+npm run lint:check

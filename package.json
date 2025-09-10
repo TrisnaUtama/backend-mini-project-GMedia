@@ -1,0 +1,40 @@
+{
+	"name": "backend-mini-project",
+	"version": "1.0.0",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "node --watch server.js",
+		"lint:format": "biome format app routes server.js --fix",
+		"lint:check": "biome lint --fix",
+		"prepare": "husky",
+
+		"migrate": "npx knex migrate:latest --knexfile knexfile.js",
+		"rollback": "npx knex migrate:rollback --knexfile knexfile.js",
+		"rollback:all": "npx knex migrate:rollback --all --knexfile knexfile.js",
+		"seed": "npx knex seed:run --knexfile knexfile.js",
+		"migrate:status": "npx knex migrate:status --knexfile knexfile.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"description": "",
+	"dependencies": {
+		"@scalar/express-api-reference": "^0.8.18",
+		"bcrypt": "^6.0.0",
+		"cors": "^2.8.5",
+		"dotenv": "^17.2.2",
+		"express": "^5.1.0",
+		"jsonwebtoken": "^9.0.2",
+		"knex": "^3.1.0",
+		"knex-paginate": "^3.2.0",
+		"pg": "^8.16.3",
+		"swagger-jsdoc": "^6.2.8",
+		"swagger-ui-express": "^5.0.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.2.4",
+		"husky": "^9.1.7"
+	}
+}
