@@ -31,3 +31,6 @@ Thumbs.db
 package-lock.json
 yarn.lock
 
+# Uploaded files
+uploads/
+
