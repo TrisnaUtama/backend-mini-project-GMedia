@@ -12,7 +12,8 @@
 		"rollback": "npx knex migrate:rollback --knexfile knexfile.js",
 		"rollback:all": "npx knex migrate:rollback --all --knexfile knexfile.js",
 		"seed": "npx knex seed:run --knexfile knexfile.js",
-		"migrate:status": "npx knex migrate:status --knexfile knexfile.js"
+		"migrate:status": "npx knex migrate:status --knexfile knexfile.js",
+		"start:dev": "npm run migrate && npm run seed && npm run dev"
 	},
 	"keywords": [],
 	"author": "",

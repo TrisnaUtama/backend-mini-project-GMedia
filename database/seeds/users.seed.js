@@ -3,8 +3,6 @@ const bcrypt = require("bcrypt");
 exports.seed = async (knex) => {
     await knex("users").del();
 
-
-
     await knex("users").insert([
         {
             id: knex.raw("uuid_generate_v4()"),

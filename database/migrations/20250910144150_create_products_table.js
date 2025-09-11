@@ -15,7 +15,7 @@ exports.up = async (knex) => {
         table.string('name', 100).notNullable();
         table.string('image').nullable();
         table.text('description').nullable();
-        table.decimal('price', 10, 2).notNullable();
+        table.decimal('price', 20, 2).notNullable();
         table.integer('stock').notNullable().defaultTo(0);
         table.timestamp('created_at').defaultTo(knex.fn.now());
         table.timestamp('updated_at').nullable();

@@ -1,7 +1,5 @@
 const { Model } = require('objection');
 const db = require('../../config/db');
-
-
 Model.knex(db);
 
 class Category extends Model {
@@ -20,12 +18,29 @@ class Category extends Model {
             properties: {
                 id: { type: 'string', format: 'uuid' },
                 name: { type: 'string', maxLength: 100 },
+                description: { type: ['string', 'null'] },
                 created_at: { type: 'string', format: 'date-time' },
                 updated_at: { type: ['string', 'null'], format: 'date-time' },
                 deleted_at: { type: ['string', 'null'], format: 'date-time' },
             },
         };
     }
+
+    static get relationMappings() {
+        const Product = require('./product.model');
+
+        return {
+            products: {
+                relation: Model.HasManyRelation,
+                modelClass: Product,
+                join: {
+                    from: 'categories.id',
+                    to: 'products.category_id',
+                },
+            },
+        };
+    }
+
     $beforeInsert() {
         const now = new Date().toISOString();
         this.created_at = now;

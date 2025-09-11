@@ -117,7 +117,7 @@ router.get('/products/:id', authMiddleware, findById, async (req, res) => {
  *     requestBody:
  *       required: true
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
  *             type: object
  *             required:
@@ -186,7 +186,7 @@ router.post('/products', authMiddleware, upload.single('image'), store, async (r
  *     requestBody:
  *       required: true
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
  *             type: object
  *             required:
