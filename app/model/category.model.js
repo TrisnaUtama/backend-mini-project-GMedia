@@ -4,9 +4,9 @@ const db = require('../../config/db');
 
 Model.knex(db);
 
-class User extends Model {
+class Category extends Model {
     static get tableName() {
-        return 'users';
+        return 'categories';
     }
 
     static get idColumn() {
@@ -16,13 +16,10 @@ class User extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['name', 'email', 'password'],
+            required: ['name'],
             properties: {
                 id: { type: 'string', format: 'uuid' },
                 name: { type: 'string', maxLength: 100 },
-                email: { type: 'string', maxLength: 100 },
-                password: { type: 'string', maxLength: 255 },
-                refresh_token: { type: ['string', 'null'] },
                 created_at: { type: 'string', format: 'date-time' },
                 updated_at: { type: ['string', 'null'], format: 'date-time' },
                 deleted_at: { type: ['string', 'null'], format: 'date-time' },
@@ -34,6 +31,10 @@ class User extends Model {
         this.created_at = now;
         this.updated_at = now;
     }
+
+    $beforeUpdate() {
+        this.updated_at = new Date().toISOString();
+    }
 }
 
-module.exports = User;
+module.exports = Category;

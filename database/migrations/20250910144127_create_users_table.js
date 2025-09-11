@@ -12,6 +12,7 @@ exports.up = async (knex) => {
         table.string("name", 100).notNullable();
         table.string("email", 100).unique().notNullable();
         table.string("password", 255).notNullable();
+        table.text('refresh_token').nullable();
         table.timestamp("created_at").defaultTo(knex.fn.now());
         table.timestamp("updated_at").nullable();
         table.timestamp("deleted_at").nullable();
