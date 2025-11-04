@@ -16,10 +16,10 @@ const createTransaction = async (req, res) => {
         const trxItems = [];
 
         for (const item of items) {
-            const product = await Product.query(knexTrx).findById(item.product_id);
+            const product = await Product.query().findById(item.product_id);
 
             if (!product) {
-                await knexTrx.rollback();
+                // await knexTrx.rollback();
                 logger.warn(`Product not found for ID: ${item.product_id}`);
                 return badRequest(res, `Product not found for ID: ${item.product_id}`);
             }
@@ -51,7 +51,7 @@ const createTransaction = async (req, res) => {
             items: trxItems
         });
 
-        await knexTrx.commit();
+        // await knexTrx.commit();
 
         logger.info(`Transaction created: ID ${trx.id} by User ${req.user.name}`);
         return success(res, new TransactionDTO(trx), "Transaction created successfully", 201);
