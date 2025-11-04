@@ -17,12 +17,12 @@ const register = async (req, res) => {
             return badRequest(res, "Username already exists");
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // const hashedPassword = await bcrypt.hash(password, 10);
 
         const newUser = await User.query().insert({
             name,
             email,
-            password: hashedPassword,
+            password,
         });
 
         logger.info(`New user registered: ${email}`);
